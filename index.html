@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>国庆乳山行 · 物品清单</title>
+<style>
+  :root{
+    --bg:#f6f3ec; --card:#fffdf8; --ink:#2b2b2b; --muted:#7a7468;
+    --line:#e6dfd0; --green:#2f7d5b; --red:#c8493a; --amber:#c98a1b; --blue:#2a6f9e;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.6; padding-bottom:calc(88px + env(safe-area-inset-bottom));
+  }
+  header{
+    padding:28px 20px 18px; background:linear-gradient(135deg,#2f7d5b,#3a8fa8);
+    color:#fff;
+  }
+  header h1{margin:0 0 4px; font-size:24px; letter-spacing:.5px}
+  header p{margin:0; opacity:.92; font-size:14px}
+  .crew{display:flex; flex-wrap:wrap; gap:6px; margin-top:12px}
+  .crew span{background:rgba(255,255,255,.2); padding:2px 10px; border-radius:99px; font-size:13px}
+
+  .wrap{max-width:720px; margin:0 auto; padding:14px 14px 0}
+  .tips{
+    background:#fff6e0; border:1px solid #f0dca6; border-radius:14px;
+    padding:12px 14px; font-size:14px; margin:6px 0 14px;
+  }
+  .tips b{color:var(--amber)}
+  .tips ul{margin:6px 0 0; padding-left:18px}
+
+  section{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    margin:0 0 14px; overflow:hidden;
+  }
+  section > h2{
+    margin:0; padding:12px 16px; font-size:16px;
+    display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--line);
+    background:#fbf7ec;
+  }
+  section > h2 small{margin-left:auto; color:var(--muted); font-weight:400; font-size:12px}
+  .tag{font-size:11px; padding:1px 8px; border-radius:99px; color:#fff; font-weight:500}
+  .tag.must{background:var(--red)}
+  .tag.check{background:var(--amber)}
+  .tag.buy{background:var(--green)}
+  .tag.opt{background:var(--blue)}
+  .sub{padding:8px 16px 2px; color:var(--muted); font-size:12px; letter-spacing:1px}
+  label.item{
+    display:flex; align-items:flex-start; gap:12px; padding:10px 16px;
+    border-top:1px solid #f0eadb; cursor:pointer; -webkit-tap-highlight-color:transparent;
+  }
+  section > h2 + label.item, .sub + label.item{border-top:none}
+  label.item input{
+    appearance:none; -webkit-appearance:none; flex:0 0 22px; width:22px; height:22px;
+    border:2px solid #bdb5a3; border-radius:7px; margin-top:2px; background:#fff;
+    display:grid; place-items:center; transition:.15s;
+  }
+  label.item input:checked{background:var(--green); border-color:var(--green)}
+  label.item input:checked::after{
+    content:""; width:6px; height:11px; border:solid #fff; border-width:0 2.5px 2.5px 0;
+    transform:rotate(45deg) translate(-1px,-1px);
+  }
+  label.item .t{flex:1; font-size:15px}
+  label.item .t em{display:block; font-style:normal; color:var(--muted); font-size:12.5px}
+  label.item input:checked + .t{color:#a9a392; text-decoration:line-through}
+  label.item input:checked + .t em{text-decoration:none}
+
+  .bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:10;
+    background:rgba(255,253,248,.96); backdrop-filter:blur(8px);
+    border-top:1px solid var(--line);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  }
+  .bar-inner{max-width:720px; margin:0 auto; display:flex; align-items:center; gap:12px}
+  .track{flex:1; height:10px; background:#ece6d6; border-radius:99px; overflow:hidden}
+  .fill{height:100%; width:0; background:linear-gradient(90deg,#2f7d5b,#5bb98c); transition:width .25s}
+  .count{font-size:14px; font-variant-numeric:tabular-nums; min-width:64px; text-align:right}
+  button.reset{
+    border:1px solid var(--line); background:#fff; color:var(--muted);
+    border-radius:10px; padding:6px 10px; font-size:12px;
+  }
+  footer{max-width:720px; margin:6px auto 0; padding:0 16px; color:var(--muted); font-size:12px; text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚗 国庆乳山行 · 物品清单</h1>
+  <p>北京 → 乳山 自驾（蔚来 ES8）· 打勾会自动保存在你自己的手机里</p>
+  <div class="crew"><span>爸爸</span><span>妈妈</span><span>孩子</span><span>姥姥</span><span>🐶 狗狗</span></div>
+</header>
+
+<div class="wrap">
+
+  <div class="tips">
+    <b>出发小贴士</b>
+    <ul>
+      <li>国庆高速免费但会堵，建议<b>清晨 6 点前</b>出发，每 2 小时停一次（狗放风、姥姥活动腿脚）。</li>
+      <li>全程约 900 公里，提前在蔚来 App 规划好<b>充电 / 换电站</b>，服务区充电桩会排队。</li>
+      <li>乳山早晚约 10 度、海边风大，10 月初一般还没供暖。</li>
+      <li>返程当天同样会堵，建议早走。</li>
+    </ul>
+  </div>
+
+  <!-- 1 -->
+  <section data-group>
+    <h2>📄 证件 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="id1"><span class="t">身份证（大人）</span></label>
+    <label class="item"><input type="checkbox" data-k="id2"><span class="t">驾驶证、行驶证</span></label>
+    <label class="item"><input type="checkbox" data-k="id3"><span class="t">医保卡 / 电子医保码已开通</span></label>
+    <label class="item"><input type="checkbox" data-k="id4"><span class="t">孩子证件（户口本或身份证）</span></label>
+    <label class="item"><input type="checkbox" data-k="id5"><span class="t">狗狗免疫证 / 疫苗本<em>小区或景区可能查验</em></span></label>
+  </section>
+
+  <!-- 2 -->
+  <section data-group>
+    <h2>💊 药品 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="med1"><span class="t">每人自己的常用药<em>按行程天数 + 2 天备用</em></span></label>
+    <label class="item"><input type="checkbox" data-k="med2"><span class="t">晕车药 + 呕吐袋<em>姥姥、孩子各备一份</em></span></label>
+    <label class="item"><input type="checkbox" data-k="med3"><span class="t">退烧药、肠胃药、创可贴、碘伏</span></label>
+    <label class="item"><input type="checkbox" data-k="med4"><span class="t">孩子的常用药和就医资料<em>以防临时看医生</em></span></label>
+    <label class="item"><input type="checkbox" data-k="med5"><span class="t">狗狗驱虫药 / 常用药</span></label>
+  </section>
+
+  <!-- 3 -->
+  <section data-group>
+    <h2>🧒 孩子 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="kid1"><span class="t">假期作业和书本、文具</span></label>
+    <label class="item"><input type="checkbox" data-k="kid2"><span class="t">水杯、换洗衣服（带多一套）</span></label>
+    <label class="item"><input type="checkbox" data-k="kid3"><span class="t">喜欢的玩具 / 乐高 / 绘本</span></label>
+    <label class="item"><input type="checkbox" data-k="kid4"><span class="t">平板 + 提前下载好的动画和音频<em>路上没信号也能看</em></span></label>
+    <label class="item"><input type="checkbox" data-k="kid5"><span class="t">耳机</span></label>
+  </section>
+
+  <!-- 4 -->
+  <section data-group>
+    <h2>👵 姥姥 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="gm1"><span class="t">常用药（别漏）</span></label>
+    <label class="item"><input type="checkbox" data-k="gm2"><span class="t">老花镜、保温杯</span></label>
+    <label class="item"><input type="checkbox" data-k="gm3"><span class="t">保暖外套、舒服的鞋、睡衣</span></label>
+    <label class="item"><input type="checkbox" data-k="gm4"><span class="t">手机和充电器</span></label>
+  </section>
+
+  <!-- 5 -->
+  <section data-group>
+    <h2>🐶 狗狗 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="dog1"><span class="t">狗粮<em>够 7 天（行程 + 备用）</em></span></label>
+    <label class="item"><input type="checkbox" data-k="dog2"><span class="t">饭碗、水碗、一瓶路上喝的水</span></label>
+    <label class="item"><input type="checkbox" data-k="dog3"><span class="t">牵引绳 + 胸背带<em>服务区必须拴好，不要让头伸出窗外</em></span></label>
+    <label class="item"><input type="checkbox" data-k="dog4"><span class="t">便袋、尿垫、湿巾</span></label>
+    <label class="item"><input type="checkbox" data-k="dog5"><span class="t">窝垫 / 小毯子、常玩的玩具</span></label>
+    <label class="item"><input type="checkbox" data-k="dog6"><span class="t">车内防脏座套 / 隔离垫</span></label>
+  </section>
+
+  <!-- 6 -->
+  <section data-group>
+    <h2>🏠 乳山房子 · 先确认 <span class="tag check">先确认</span><small></small></h2>
+    <div class="sub">联系物业 / 邻居问清楚</div>
+    <label class="item"><input type="checkbox" data-k="h1"><span class="t">水、电、燃气已开通且有余额</span></label>
+    <label class="item"><input type="checkbox" data-k="h2"><span class="t">热水器能用吗</span></label>
+    <label class="item"><input type="checkbox" data-k="h3"><span class="t">有没有 WiFi / 网络</span></label>
+    <label class="item"><input type="checkbox" data-k="h4"><span class="t">长期没住：有无霉味、下水道返味<em>到了先开窗通风</em></span></label>
+    <label class="item"><input type="checkbox" data-k="h5"><span class="t">小区对养狗有没有要求</span></label>
+  </section>
+
+  <!-- 7 -->
+  <section data-group>
+    <h2>🛏 房子里缺的东西 <span class="tag check">看情况</span><small></small></h2>
+    <div class="sub">寝具</div>
+    <label class="item"><input type="checkbox" data-k="b1"><span class="t">被子、床单、枕头（4 人用）<em>姥姥可以厚一点</em></span></label>
+    <label class="item"><input type="checkbox" data-k="b2"><span class="t">电热毯 / 小太阳<em>没空调、没暖气才需要</em></span></label>
+    <div class="sub">洗漱</div>
+    <label class="item"><input type="checkbox" data-k="b3"><span class="t">毛巾、浴巾、牙刷牙膏、拖鞋</span></label>
+    <label class="item"><input type="checkbox" data-k="b4"><span class="t">洗发水、沐浴露、卫生纸、纸巾</span></label>
+    <div class="sub">厨房</div>
+    <label class="item"><input type="checkbox" data-k="k1"><span class="t">烧水壶、电饭煲或小炒锅</span></label>
+    <label class="item"><input type="checkbox" data-k="k2"><span class="t">刀、砧板、碗筷</span></label>
+    <label class="item"><input type="checkbox" data-k="k3"><span class="t">油盐酱醋、洗洁精、抹布、垃圾袋</span></label>
+    <div class="sub">清洁 / 其他</div>
+    <label class="item"><input type="checkbox" data-k="c1"><span class="t">拖把、扫把、消毒液、湿巾</span></label>
+    <label class="item"><input type="checkbox" data-k="c2"><span class="t">插线板、手机充电器</span></label>
+    <label class="item"><input type="checkbox" data-k="c3"><span class="t">除湿盒 / 杀虫喷雾</span></label>
+  </section>
+
+  <!-- 8 -->
+  <section data-group>
+    <h2>🚗 车上（ES8） <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="car1"><span class="t">随车充电枪 + 转接头</span></label>
+    <label class="item"><input type="checkbox" data-k="car2"><span class="t">灭火器、三角警示牌</span></label>
+    <label class="item"><input type="checkbox" data-k="car3"><span class="t">打气泵或补胎液</span></label>
+    <label class="item"><input type="checkbox" data-k="car4"><span class="t">车载手机支架、充电宝、数据线</span></label>
+    <label class="item"><input type="checkbox" data-k="car5"><span class="t">水、零食、湿巾、垃圾袋</span></label>
+    <label class="item"><input type="checkbox" data-k="car6"><span class="t">毯子（姥姥、孩子路上盖）</span></label>
+    <label class="item"><input type="checkbox" data-k="car7"><span class="t">蔚来 App 规划好充电 / 换电站</span></label>
+  </section>
+
+  <!-- 9 -->
+  <section data-group>
+    <h2>👕 衣物 <span class="tag must">必带</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="cl1"><span class="t">防风外套 / 薄外套<em>早晚温差大，海边风大</em></span></label>
+    <label class="item"><input type="checkbox" data-k="cl2"><span class="t">换洗衣物、睡衣</span></label>
+    <label class="item"><input type="checkbox" data-k="cl3"><span class="t">舒适运动鞋</span></label>
+  </section>
+
+  <!-- 10 -->
+  <section data-group>
+    <h2>🌊 看心情带 <span class="tag opt">可选</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="o1"><span class="t">赶海小桶、铲子、防滑鞋</span></label>
+    <label class="item"><input type="checkbox" data-k="o2"><span class="t">沙滩玩具、小帐篷、野餐垫</span></label>
+    <label class="item"><input type="checkbox" data-k="o3"><span class="t">相机 / 无人机</span></label>
+  </section>
+
+  <!-- 11 -->
+  <section data-group>
+    <h2>🛒 到了乳山再买 <span class="tag buy">当地买</span><small></small></h2>
+    <label class="item"><input type="checkbox" data-k="m1"><span class="t">米面油、蔬菜水果、肉蛋奶</span></label>
+    <label class="item"><input type="checkbox" data-k="m2"><span class="t">饮用水、饮料</span></label>
+    <label class="item"><input type="checkbox" data-k="m3"><span class="t">补缺的锅碗、大件日用品</span></label>
+    <label class="item"><input type="checkbox" data-k="m4"><span class="t">海鲜 🦐</span></label>
+  </section>
+
+</div>
+
+<footer>清单仅供家人参考 · 勾选状态保存在各自浏览器，不会同步给别人</footer>
+
+<div class="bar">
+  <div class="bar-inner">
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="count" id="count">0 / 0</div>
+    <button class="reset" id="reset">清空</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY = 'rushan-trip-checklist-v1';
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[type=checkbox][data-k]'));
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){ state = {}; }
+
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+  function refresh(){
+    var done = boxes.filter(function(b){return b.checked}).length;
+    document.getElementById('count').textContent = done + ' / ' + boxes.length;
+    document.getElementById('fill').style.width = (boxes.length ? done / boxes.length * 100 : 0) + '%';
+    Array.prototype.forEach.call(document.querySelectorAll('section[data-group]'), function(sec){
+      var bs = sec.querySelectorAll('input[type=checkbox][data-k]');
+      var d = 0; for (var i=0;i<bs.length;i++) if (bs[i].checked) d++;
+      var s = sec.querySelector('h2 small');
+      if (s) s.textContent = d + '/' + bs.length;
+    });
+  }
+
+  boxes.forEach(function(b){
+    b.checked = !!state[b.getAttribute('data-k')];
+    b.addEventListener('change', function(){
+      state[b.getAttribute('data-k')] = b.checked;
+      save(); refresh();
+    });
+  });
+
+  document.getElementById('reset').addEventListener('click', function(){
+    if (!confirm('确定清空所有勾选吗？')) return;
+    state = {}; boxes.forEach(function(b){ b.checked = false; });
+    save(); refresh();
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
